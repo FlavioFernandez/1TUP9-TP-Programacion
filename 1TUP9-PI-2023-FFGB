@@ -45,7 +45,7 @@ Funcion reservarTurno = agendarTurno(agendaVacunatorio, stockVacunas, vacunas, p
 				pacientesListado[dim-1, 4] = "Tripe Viral"
 				stockVacunas[5] = stockVacunas[5] - 1
 		FinSegun
-		Para i = 0 Hasta dim - 1 Con Paso 1 Hacer
+		Para i = 0 Hasta 4 Con Paso 1 Hacer
 			Escribir pacientesListado[dim-1,i]
 		FinPara
 	FinSi
