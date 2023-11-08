@@ -3,23 +3,23 @@ Funcion reservarTurno = agendarTurno(agendaVacunatorio, stockVacunas, vacunas, p
 	definir bandera, verAgenda Como Logico
 	bandera = Verdadero
 	verAgenda = mostrarAgenda(agendaVacunatorio)
-	Escribir "Seleccione un turno: "
+	Escribir "seleccione un turno: "
 	Leer dia, hora
 	agendaVacunatorio[dia,hora] = "-"
-	Escribir "Ingrese su nombre: "
+	Escribir "ingrese su nombre: "
 	Leer pacientesListado[dim-1, 0]
-	Escribir "Ingrese su apellido:"
+	Escribir "ingrese su apellido:"
 	Leer pacientesListado[dim-1, 1]
-	Escribir "Ingrese su DNI: "
+	Escribir "ingrese DNI"
 	Leer pacientesListado[dim-1, 2]
-	Escribir "Ingrese su edad: "
+	Escribir "ingrese su edad"
 	Leer pacientesListado[dim-1, 3]
-	Escribir "Ingrese el número de la vacuna:"
+	Escribir "ingrese el numero de la vacuna"
 	Para i = 0 hasta 5 Con Paso 1 Hacer
 		x = i +1
 		Mostrar x, " ", vacunas[i]
 		Mientras stockVacunas[i] < 0 y bandera = Verdadero Hacer
-			Escribir "No hay stock de la vacuna."
+			Escribir "no hay stock de la vacuna"
 			bandera = Falso
 		FinMientras
 	FinPara
@@ -46,9 +46,7 @@ Funcion reservarTurno = agendarTurno(agendaVacunatorio, stockVacunas, vacunas, p
 				stockVacunas[5] = stockVacunas[5] - 1
 		FinSegun
 		Para i = 0 Hasta dim - 1 Con Paso 1 Hacer
-			para j = 0 Hasta 4 con paso 1 Hacer
-				Escribir pacientesListado[i, j]
-			FinPara
+			Escribir pacientesListado[dim-1,i]
 		FinPara
 	FinSi
 	turnosOtorgados = turnosOtorgados + 1
@@ -167,23 +165,19 @@ Proceso vacunatorio
 	turnosOtorgados = 0
 	opcionMenu = 3
 	Dimension edad[dim]
-	Escribir "-------------------------------------------------------------------------"
     Escribir "Bienvenido al Sistema de Gestión de Turnos para el Vacunatorio - Hospital de Niños Dr. Victor J. Vilela"
-	Escribir "-------------------------------------------------------------------------"
+	
 	Mientras opcionMenu <> 6 Hacer
 		Escribir "Menú de opciones:"
 		Escribir "1. Reservar turno"
 		Escribir "2. Buscar paciente"
-		Escribir "3. Ver agenda del vacunatorio"
-		Escribir "4. Ordenar y mostrar lista de pacientes"
+		Escribir "3. Ver agenda vacunatorio"
+		Escribir "4. Ordenar y mostrar lista pacientes"
 		Escribir "5. Listados"
 		Escribir "6. Salir"
-		Escribir "---------------------------------------"
 		Escribir "Seleccione una opción: "
 		Mientras opcionMenu < 1 o opcionMenu > 6 Hacer
-			Escribir "---------------------------------------"
-			Escribir "Error: seleccione una opcion válida."
-			Escribir "---------------------------------------"
+			Escribir "Seleccione una opcion valida"
 		FinMientras
 		Leer opcionMenu
 		Segun opcionMenu Hacer
@@ -194,12 +188,12 @@ Proceso vacunatorio
 			2:
 				Escribir "Ingrese el DNI del paciente a buscar: "
 				Leer DNI
-				buscarPaciente = busquedaDni(DNI, pacientesListado, dim)
+				buscarPaciente= busquedaDni(DNI, pacientesListado, dim)
 			3:
-				Mostrar "Ver agenda del vacunatorio"
+				Mostrar "Ver agenda vacunatorio"
 				verAgenda = mostrarAgenda(agendaVacunatorio)
 			4:
-				Mostrar "Ordenar y mostrar lista de pacientes"
+				Mostrar "Ordenar y mostrar lista pacientes"
 				Escribir "   a. Por edad"
 				Escribir "   b. Por Vacuna"
 				leer orden
@@ -250,11 +244,11 @@ Proceso vacunatorio
 			5:
 				Escribir "Listados"
 				Escribir "   1. Cantidad de turnos otorgados"
-				Escribir "   2. Cantidad de vacunas a aplicar por vacunas"
+				Escribir "   2. Cantida de vacunas a aplicar por vacunas"
 				Leer Listado
 				segun listado hacer
 					1:
-						Escribir "Se otorgaron ", turnosOtorgados " turnos"
+						Escribir "otorgaste ", turnosOtorgados " turnos"
 					2:
 						Para i=0 Hasta 5 con paso 1 Hacer
 							Escribir vacunas[i]
@@ -262,9 +256,7 @@ Proceso vacunatorio
 				FinSegun
 		FinSegun
 	fin mientras
-	Escribir "-------------------------------------------------------------------------"
-	Escribir "Muchas gracias por utilizar el Sistema de Gestión de Turnos para el Vacunatorio - Hospital de Niños Dr. Victor J. Vilela."
-	Escribir "-------------------------------------------------------------------------"
+	Escribir "Muchas gracias por usar el Sistema de Gestión de Turnos para el Vacunatorio - Hospital de Niños Dr. Victor J. Vilela"
 FinProceso
 
 Funcion buscarPaciente <- busquedaDni(DNI, pacientesListado, dim)
@@ -273,7 +265,7 @@ Funcion buscarPaciente <- busquedaDni(DNI, pacientesListado, dim)
 	bandera = Falso
 	Mientras i <= dim-1 Hacer
 		si pacientesListado[i,2] == DNI Entonces
-			Escribir "Se encontró el paciente."
+			Escribir "Se encontro el paciente"
 			Escribir pacientesListado[i,0]
 			Escribir pacientesListado[i,1]
 			Escribir pacientesListado[i,2]
@@ -285,9 +277,7 @@ Funcion buscarPaciente <- busquedaDni(DNI, pacientesListado, dim)
 		i = i + 1
 	FinMientras
 	si bandera = Falso Entonces
-		Escribir "!"
-		Escribir "Error: no se encontró el paciente."
-		Escribir "!"
+		Escribir "No se encontro el paciente"
 	FinSi
 FinFuncion
 
